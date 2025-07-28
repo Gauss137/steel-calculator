@@ -1,43 +1,93 @@
-import { BeamInputData, BeamResults } from '@/types';
-import { BEAM_CSV_CONFIG as CSV_CONFIG, BEAM_DEFAULT_UNITS as DEFAULT_UNITS } from './beam-constants';
+import { SteelCalculatorData, SteelCalculatorResults } from '@/types';
+import { STEEL_CSV_CONFIG as CSV_CONFIG, STEEL_DEFAULT_UNITS as DEFAULT_UNITS } from './steel-constants';
 
-export function generateCSVContent(inputData: BeamInputData, results: BeamResults): string {
+export function generateCSVContent(
+  inputData: SteelCalculatorData, 
+  results: SteelCalculatorResults,
+  selectedTab: 'table1' | 'table2' | 'table3'
+): string {
   const fecha = new Date().toLocaleDateString('es-ES');
   const hora = new Date().toLocaleTimeString('es-ES');
   
-  return [
+  let csvContent = [
     CSV_CONFIG.HEADERS.TITLE,
     CSV_CONFIG.HEADERS.COMPANY,
     `Fecha: ${fecha}`,
     `Hora: ${hora}`,
     "",
     CSV_CONFIG.HEADERS.INPUT_DATA,
-    "Parámetro,Valor,Unidad",
-    `Longitud de la viga (L),${inputData.L},${DEFAULT_UNITS.LENGTH}`,
-    `Carga uniforme (w),${inputData.w},${DEFAULT_UNITS.DISTRIBUTED_LOAD}`,
-    `Módulo de elasticidad (E),${inputData.E},${DEFAULT_UNITS.ELASTIC_MODULUS}`,
-    `Momento de inercia (I),${inputData.I},${DEFAULT_UNITS.MOMENT_INERTIA}`,
-    `Sección analizada (x),${inputData.x},${DEFAULT_UNITS.LENGTH}`,
-    "",
-    CSV_CONFIG.HEADERS.RESULTS,
-    "Concepto,Valor,Unidad",
-    `Reacción en apoyos (R),${results.R},${DEFAULT_UNITS.FORCE}`,
-    `Cortante máximo (Vmax),${results.Vmax},${DEFAULT_UNITS.FORCE}`,
-    `Cortante en x (Vx),${results.Vx},${DEFAULT_UNITS.FORCE}`,
-    `Momento máximo (Mmax),${results.Mmax},${DEFAULT_UNITS.MOMENT}`,
-    `Momento en x (Mx),${results.Mx},${DEFAULT_UNITS.MOMENT}`,
-    `Flecha máxima (Δmax),${results.Dmax},${DEFAULT_UNITS.DEFLECTION}`,
-    `Flecha en x (Δx),${results.Dx},${DEFAULT_UNITS.DEFLECTION}`,
+  ];
+
+  // Agregar datos según la tabla seleccionada
+  switch (selectedTab) {
+    case 'table1':
+      csvContent.push(
+        "Diámetro,Cantidad,Unidad",
+        ...Object.entries(inputData.table1.quantities)
+          .filter(([_, quantity]) => quantity > 0)
+          .map(([diameter, quantity]) => `Ø${diameter}mm,${quantity},${DEFAULT_UNITS.QUANTITY}`)
+      );
+      csvContent.push(
+        "",
+        CSV_CONFIG.HEADERS.RESULTS,
+        "Concepto,Valor,Unidad",
+        `Área Total de Acero,${results.table1.totalArea.toFixed(2)},${DEFAULT_UNITS.AREA}`
+      );
+      break;
+
+    case 'table2':
+      csvContent.push(
+        "Concepto,Valor,Unidad",
+        `Área Total Deseada,${inputData.table2.targetArea},${DEFAULT_UNITS.AREA}`,
+        "",
+        "Diámetro,Cantidad Sugerida,Unidad"
+      );
+      Object.entries(results.table2.suggestedQuantities).forEach(([diameter, quantity]) => {
+        csvContent.push(`Ø${diameter}mm,${quantity.toFixed(2)},${DEFAULT_UNITS.QUANTITY}`);
+      });
+      break;
+
+    case 'table3':
+      csvContent.push(
+        "Barras Seleccionadas:",
+        ...Object.entries(inputData.table3.selectedBars)
+          .filter(([_, selected]) => selected)
+          .map(([diameter, _]) => `Ø${diameter}mm`)
+      );
+      
+      if (inputData.table3.steelRatio !== undefined) {
+        csvContent.push(
+          "",
+          "Cuantía de Acero,Separación Calculada,Unidad",
+          `${inputData.table3.steelRatio},${results.table3.spacing?.toFixed(2) || 'N/A'},${DEFAULT_UNITS.SPACING}`
+        );
+      } else if (inputData.table3.spacing !== undefined) {
+        csvContent.push(
+          "",
+          "Separación de Barras,Cuantía Calculada,Unidad",
+          `${inputData.table3.spacing},${results.table3.steelRatio?.toFixed(2) || 'N/A'},${DEFAULT_UNITS.STEEL_RATIO}`
+        );
+      }
+      break;
+  }
+
+  csvContent.push(
     "",
     CSV_CONFIG.HEADERS.NOTE,
-    "Los resultados fueron calculados considerando una viga simplemente apoyada",
-    "con carga uniforme distribuida. Verificar la aplicabilidad según las",
-    "condiciones reales del proyecto."
-  ].join('\n');
+    "Los resultados fueron calculados considerando las especificaciones",
+    "de barras de acero estructural. Verificar la aplicabilidad según",
+    "las condiciones reales del proyecto."
+  );
+
+  return csvContent.join('\n');
 }
 
-export function downloadCSV(inputData: BeamInputData, results: BeamResults): void {
-  const csvContent = generateCSVContent(inputData, results);
+export function downloadCSV(
+  inputData: SteelCalculatorData, 
+  results: SteelCalculatorResults,
+  selectedTab: 'table1' | 'table2' | 'table3'
+): void {
+  const csvContent = generateCSVContent(inputData, results, selectedTab);
   const fecha = new Date().toLocaleDateString('es-ES').replace(/\//g, '-');
   const filename = `${CSV_CONFIG.FILENAME_PREFIX}${fecha}.csv`;
 
