@@ -377,7 +377,7 @@ export function SteelCalculator() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-6 space-y-6 py-8">
+    <div className="max-w-4xl mx-auto px-6 space-y-6 py-4">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
