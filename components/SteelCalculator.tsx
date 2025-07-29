@@ -374,7 +374,7 @@ export function SteelCalculator() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-6 space-y-6 py-4">
+    <div className="max-w-4xl mx-auto px-6 space-y-6 py-4">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
@@ -388,26 +388,10 @@ export function SteelCalculator() {
       {/* Descripciones siempre visibles */}
       {renderDescriptions()}
 
-      {/* Layout principal con anuncio lateral */}
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Contenido principal */}
-        <div className="flex-1">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-            {renderTabs()}
-            <div className="mt-6">{renderActiveCalculator()}</div>
-          </div>
-        </div>
-        
-        {/* Anuncio lateral */}
-        <div className="lg:w-80 flex-shrink-0">
-          <div className="sticky top-4">
-            <AdSense 
-              adSlot="8917117169" 
-              adType="lateral"
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-4"
-            />
-          </div>
-        </div>
+      {/* Calculadora principal */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+        {renderTabs()}
+        <div className="mt-6">{renderActiveCalculator()}</div>
       </div>
     </div>
   );
