@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function SteelCalculatorPage() {
   return (
-    <div className="bg-gray-50 pt-4 pb-8">
+    <div className="bg-gray-50 pt-4 pb-4">
       {/* AdSense Banner - Top */}
       <div className="max-w-4xl mx-auto px-6 mb-4">
         <AdSense 
@@ -38,10 +38,10 @@ export default function SteelCalculatorPage() {
       <SteelCalculator />
       
       {/* AdSense Banner - Bottom */}
-      <div className="max-w-4xl mx-auto px-6 mt-8">
+      <div className="max-w-4xl mx-auto px-6 mt-4">
         <AdSense 
           adSlot="0987654321" 
-          className="mt-4"
+          className="mt-2"
         />
       </div>
     </div>
