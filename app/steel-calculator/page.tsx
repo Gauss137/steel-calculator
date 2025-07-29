@@ -30,7 +30,8 @@ export default function SteelCalculatorPage() {
       {/* AdSense Banner - Top */}
       <div className="max-w-4xl mx-auto px-6 mb-4">
         <AdSense 
-          adSlot="1234567890" 
+          adSlot="5673056477" 
+          adType="banner"
           className="mb-4"
         />
       </div>
@@ -40,7 +41,8 @@ export default function SteelCalculatorPage() {
       {/* AdSense Banner - Bottom */}
       <div className="max-w-4xl mx-auto px-6 mt-4">
         <AdSense 
-          adSlot="0987654321" 
+          adSlot="8378061114" 
+          adType="inferior"
           className="mt-2"
         />
       </div>

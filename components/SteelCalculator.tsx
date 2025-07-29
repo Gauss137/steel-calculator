@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { RotateCcw } from "lucide-react";
+import AdSense from './AdSense';
 
 import { useSteelCalculator } from '@/hooks/useSteelCalculator';
 import { STEEL_APP_CONFIG as APP_CONFIG, STEEL_DEFAULT_UNITS as DEFAULT_UNITS } from '@/lib/steel-constants';
@@ -373,7 +374,7 @@ export function SteelCalculator() {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-6 space-y-6 py-4">
+    <div className="max-w-6xl mx-auto px-6 space-y-6 py-4">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 border-b-4 border-[#f8b133] inline-block pb-1">
@@ -387,12 +388,27 @@ export function SteelCalculator() {
       {/* Descripciones siempre visibles */}
       {renderDescriptions()}
 
-      {/* Tabs y calculadora activa */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-        {renderTabs()}
-        <div className="mt-6">{renderActiveCalculator()}</div>
+      {/* Layout principal con anuncio lateral */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Contenido principal */}
+        <div className="flex-1">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+            {renderTabs()}
+            <div className="mt-6">{renderActiveCalculator()}</div>
+          </div>
+        </div>
+        
+        {/* Anuncio lateral */}
+        <div className="lg:w-80 flex-shrink-0">
+          <div className="sticky top-4">
+            <AdSense 
+              adSlot="8917117169" 
+              adType="lateral"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 p-4"
+            />
+          </div>
+        </div>
       </div>
-
     </div>
   );
 }
