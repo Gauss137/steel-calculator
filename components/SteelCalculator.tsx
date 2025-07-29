@@ -58,21 +58,21 @@ export function SteelCalculator() {
       label: 'Cuantía Total',
       title: 'CALCULADORA 1: Cálculo de Cuantía Total de Acero',
       description: 'Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.',
-      useCase: '💡 Úsala cuando: Ya tienes definidas las cantidades de barras por diámetro.'
+      useCase: '💡 Úsala cuando: Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.'
     },
     {
       value: 'tabla2',
       label: 'Cantidades de Barras',
       title: 'CALCULADORA 2: Cálculo de Cantidades de Barras',
       description: 'Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.',
-      useCase: '💡 Úsala cuando: Tienes el área de acero requerida del diseño estructural.'
+      useCase: '💡 Úsala cuando: Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.'
     },
     {
       value: 'tabla3',
       label: 'Cuantías y Separaciones',
       title: 'CALCULADORA 3: Cálculo de Cuantías y Separaciones',
       description: 'Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.',
-      useCase: '💡 Úsala cuando: Necesites cuantías por metro lineal o espaciamientos específicos.'
+      useCase: '💡 Úsala cuando: Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.'
     }
   ];
 
