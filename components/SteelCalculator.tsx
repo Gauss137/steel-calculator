@@ -51,28 +51,25 @@ export function SteelCalculator() {
     tabla3: <span className="text-base mr-1 align-middle">A<sub className="text-xs">s</sub>/m</span>,
   };
 
-  // Opciones de tabs y descripciones
+  // Opciones de tabs y descripciones - Actualizado 2025
   const tabOptions = [
     {
       value: 'tabla1',
       label: 'Cuantía Total',
       title: 'CALCULADORA 1: Cálculo de Cuantía Total de Acero',
-      description: 'Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.',
-      useCase: '💡 Úsala cuando: Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.'
+      useCase: 'Úsala cuando: Tienes las cantidades de barras y necesitas conocer la cuantía total de acero.'
     },
     {
       value: 'tabla2',
       label: 'Cantidades de Barras',
       title: 'CALCULADORA 2: Cálculo de Cantidades de Barras',
-      description: 'Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.',
-      useCase: '💡 Úsala cuando: Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.'
+      useCase: 'Úsala cuando: Tienes una cuantía objetivo y necesitas saber cuántas barras usar de cada diámetro.'
     },
     {
       value: 'tabla3',
       label: 'Cuantías y Separaciones',
       title: 'CALCULADORA 3: Cálculo de Cuantías y Separaciones',
-      description: 'Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.',
-      useCase: '💡 Úsala cuando: Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.'
+      useCase: 'Úsala cuando: Necesitas calcular cuantías de acero por metro lineal o determinar separaciones entre barras.'
     }
   ];
 
@@ -111,8 +108,7 @@ export function SteelCalculator() {
         {tabOptions.map((option) => (
           <div key={option.value} className="flex flex-col gap-0.5 px-4 py-2">
             <span className="font-bold text-gray-800 text-sm md:text-base">{option.label}</span>
-            <span className="text-gray-500 text-xs md:text-sm leading-tight">{option.description}</span>
-            <span className="text-xs md:text-sm text-gray-600 mt-1">{option.useCase.replace('💡 ', '')}</span>
+            <span className="text-gray-500 text-xs md:text-sm leading-tight">{option.useCase}</span>
           </div>
         ))}
       </div>
