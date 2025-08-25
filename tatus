@@ -1,5 +1,0 @@
-[33mf1046a7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Update calculator descriptions with improved use case explanations
-[33mcb801b7[m Make background consistent: layout uses bg-gray-50 for entire app
-[33me59168e[m Reduce footer spacing and change background to gray to minimize white space
-[33m1d5011d[m Reduce page padding and AdSense margins to eliminate excess white space
-[33mf457ff4[m Reduce SteelCalculator padding to eliminate excess white space

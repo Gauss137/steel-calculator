@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { RotateCcw } from "lucide-react";
-import AdSense from './AdSense';
+
 
 import { useSteelCalculator } from '@/hooks/useSteelCalculator';
 import { STEEL_APP_CONFIG as APP_CONFIG, STEEL_DEFAULT_UNITS as DEFAULT_UNITS } from '@/lib/steel-constants';
