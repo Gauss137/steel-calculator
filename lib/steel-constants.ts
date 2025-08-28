@@ -2,7 +2,7 @@
 export const STEEL_APP_CONFIG = {
   TITLE: 'Calculadoras de Acero Estructural',
   COMPANY: 'CSW Ingeniería Civil',
-  DESCRIPTION: 'Calcula áreas, cantidades y cuantías de barras de acero estructural',
+  DESCRIPTION: 'Calcula áreas, cantidades y cuantías de barras de acero estructural.',
   MAX_WIDTH: 'max-w-5xl',
   COPYRIGHT_MESSAGE: 'Desarrollado por cswingenieriacivil.com',
   BRAND_COLORS: {
