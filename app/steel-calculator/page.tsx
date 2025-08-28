@@ -3,7 +3,7 @@ import SteelCalculator from '../../components/SteelCalculator';
 
 export const metadata: Metadata = {
   title: 'Calculadora de Acero - CSW Ingeniería Civil',
-  description: 'Calculadora profesional para diseño de acero estructural. Herramienta especializada para ingenieros civiles y estructurales.',
+  description: 'Calculadora para diseño de acero estructural. Herramienta para ingenieros civiles y estructurales.',
   keywords: ['calculadora acero', 'diseño estructural', 'ingeniería civil', 'acero construcción', 'vigas acero'],
   authors: [{ name: 'CSW Ingeniería Civil' }],
   openGraph: {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Calculadora de Acero - CSW Ingeniería Civil',
-    description: 'Calculadora profesional para diseño de acero estructural',
+    description: 'Calculadora profesional para diseño de acero estructural.',
   },
   alternates: {
     canonical: 'https://steelcalculator.cswingenieriacivil.com',
