@@ -1,7 +1,7 @@
 "use client";
 
 import { X } from 'lucide-react';
-import { APP_CONFIG } from '../constants';
+import { APP_CONFIG } from './constants';
 
 interface ModalProps {
   isOpen: boolean;
