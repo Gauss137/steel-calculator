@@ -11,6 +11,31 @@ import { RotateCcw } from "lucide-react";
 import { useSteelCalculator } from '@/hooks/useSteelCalculator';
 import { STEEL_APP_CONFIG as APP_CONFIG, STEEL_DEFAULT_UNITS as DEFAULT_UNITS } from '@/lib/steel-constants';
 
+// Hook para detectar el tamaño de pantalla de manera segura
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      handleResize();
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  return windowSize;
+}
+
 export function SteelCalculator() {
   const {
     inputData,
@@ -28,9 +53,8 @@ export function SteelCalculator() {
   } = useSteelCalculator();
 
   const [selectedTab, setSelectedTab] = useState<string>('tabla1');
-  // Estado para saber si estamos en cliente
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => { setIsClient(true); }, []);
+  const { width: windowWidth } = useWindowSize();
+  const isMobile = windowWidth < 768;
 
   // Auto-calcular cuando cambien los datos
   useEffect(() => {
@@ -87,8 +111,8 @@ export function SteelCalculator() {
               : 'border-transparent text-gray-600 hover:text-[#f8b133] hover:bg-gray-50'
           }`}
           style={
-            selectedTab === tab.value && isClient
-              ? (window.innerWidth < 768
+            selectedTab === tab.value
+              ? (isMobile
                   ? { boxShadow: '4px 0 16px 0 rgba(248,177,51,0.18)' }
                   : { boxShadow: '0 -4px 16px 0 rgba(248,177,51,0.18)' })
               : undefined
