@@ -82,8 +82,6 @@ export function MobileMenu() {
               {/* Más */}
               <a
                 href="https://www.cswingenieriacivil.com/herramientas"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="flex items-center p-3 text-gray-700 hover:text-[#f1d475] hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={closeMenu}
               >
