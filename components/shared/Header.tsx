@@ -34,8 +34,6 @@ export function Header() {
           </a>
           <a 
             href={EXTERNAL_LINKS.CONTACT}
-            target="_blank" 
-            rel="noopener noreferrer" 
             className="text-gray-700 hover:text-[#f1d475] transition-colors"
           >
             Contacto
